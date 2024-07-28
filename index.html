@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Pre-Registration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Student Pre-Registration Form</h1>
+    <form id="registrationForm">
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number" name="phone_number" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="street_address">Street Address:</label>
+        <input type="text" id="street_address" name="street_address" required>
+
+        <label for="street_address_line_2">Street Address Line 2:</label>
+        <input type="text" id="street_address_line_2" name="street_address_line_2">
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="region">Region:</label>
+        <input type="text" id="region" name="region" required>
+
+        <label for="postal_code">Postal/Zip Code:</label>
+        <input type="text" id="postal_code" name="postal_code" required>
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required>
+
+        <label>What programs are you interested in?</label>
+        <div id="option">            
+            <input type="radio" id="BE" name="program" value="BE">
+            <label for="BE">Bachelors of Engineering</label><br>
+        </div>
+        <div id="option">        
+            <input type="radio" id="BDES" name="program" value="BDES">
+            <label for="BDES">Bachelors of Design</label><br>
+        </div>
+        <div id="option">
+            <input type="radio" id="BPHARMA" name="program" value="BPHARMA">
+            <label for="BPHARMA">Bachelors of Pharmacy</label><br>
+        </div>
+        <div id="option">
+            <input type="radio" id="BA_CA" name="program" value="BA_CA">
+            <label for="BA_CA">Bachelor of Arts in Culinary Arts</label><br>
+        </div>
+        
+        <button type="button" id="nextButton">NEXT</button>
+    </form>
+
+    <script>
+        document.getElementById('nextButton').addEventListener('click', function(event) {
+            const phoneNumber = document.getElementById('phone_number').value;
+            const phoneNumberPattern = /^\d{10}$/;
+            if (!phoneNumberPattern.test(phoneNumber)) {
+                alert('Please enter a valid 10-digit phone number.');
+                return;
+            }
+            const selectedProgram = document.querySelector('input[name="program"]:checked');
+            if (selectedProgram) {
+                let url;
+                switch (selectedProgram.value) {
+                    case 'BE':
+                        url = 'BE.html';
+                        break;
+                    case 'BDES':
+                        url = 'BDES.html';
+                        break;
+                    case 'BPHARMA':
+                        url = 'BPHARMA.html';
+                        break;
+                    case 'BA_CA':
+                        url = 'BA_CA.html';
+                        break;
+                    default:
+                        alert('Please select a program.');
+                        return;
+                }
+                window.location.href = url;
+            } else {
+                alert('Please select a program.');
+            }
+        });
+    </script>
+</body>
+</html>
