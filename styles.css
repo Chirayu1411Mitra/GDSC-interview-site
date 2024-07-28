@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 body {
     font-family: Arial, sans-serif;
     background-image: url(depositbackgroundv2.jpg);
@@ -20,6 +22,7 @@ body {
 
 h1 {
     text-align: center;
+    font-family: "Roboto Slab", serif;
 }
 
 form {
@@ -27,18 +30,20 @@ form {
     width: 500px;
     padding: 20px;
     padding-right: 40px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
+    font-family: "Ubuntu", sans-serif;
 }
 
 input[type="text"],
 input[type="tel"],
 input[type="email"],
-input[type="file"] {
+input[type="file"],
+select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -62,6 +67,10 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    
 }
 @media (max-width: 600px) {
     h1 {
