@@ -142,9 +142,20 @@
     }
 });
 
-document.getElementById('darkModeToggle').addEventListener('change', function() {
-    const darkModeStylesheet = document.getElementById('dark-mode-stylesheet');
+let checkbox = document.getElementById('darkModeToggle');
+
+window.addEventListener('load', function() {
+    const darkMode = window.localStorage.getItem("dark-mode");
+    if (darkMode) {
+        checkbox.checked = darkMode === 'true';
+        document.getElementById('dark-mode-stylesheet').disabled = darkMode !== 'true';
+    }
+});
+
+checkbox.addEventListener('change', function() {
+    const darkModeStylesheet = document.getElementById('dark-mode-stylesheet'); 
     darkModeStylesheet.disabled = !this.checked;
+    window.localStorage.setItem("dark-mode", this.checked);
 });
 
 var allFields = document.querySelectorAll(".fields");

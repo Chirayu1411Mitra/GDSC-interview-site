@@ -17,10 +17,21 @@
     <div id="message2"><h2>You may recieve a confirmation mail in 24 hours</h2></div>
 </div>
 <script>
-    document.getElementById('darkModeToggle').addEventListener('change', function() {
-        const darkModeStylesheet = document.getElementById('dark-mode-stylesheet');
-        darkModeStylesheet.disabled = !this.checked;
-    });
+    let checkbox = document.getElementById('darkModeToggle');
+
+window.addEventListener('load', function() {
+    const darkMode = window.localStorage.getItem("dark-mode");
+    if (darkMode) {
+        checkbox.checked = darkMode === 'true';
+        document.getElementById('dark-mode-stylesheet').disabled = darkMode !== 'true';
+    }
+});
+
+checkbox.addEventListener('change', function() {
+    const darkModeStylesheet = document.getElementById('dark-mode-stylesheet'); 
+    darkModeStylesheet.disabled = !this.checked;
+    window.localStorage.setItem("dark-mode", this.checked);
+});
 </script>
 </body>
 </html>
