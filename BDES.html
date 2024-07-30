@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="BE.css">
+    <link rel="stylesheet" href="dark-mode.css" id="dark-mode-stylesheet" disabled>
 </head>
 <body>
    <h1>Select the course</h1>
+   <div class="checkbox-co">
+    <label for="darkModeToggle" class="dark-mode-toggle">Dark Mode</label>
+    <input type="checkbox" id="darkModeToggle">
+</div>
    
-   <form action="./upload.html">
-    <div id="form">
+   <form action="./upload.html" onsubmit="return validateForm()">
     <div id="option">            
         <input type="radio" id="FD" name="sub program" value="FD">
         <label for="FD">Fasion Design</label><br></div>
@@ -24,8 +28,22 @@
                     <input type="radio" id="PD" name="program" value="PD">
                     <label for="PD">Product Design</label><br></div>
                     <button type="submit">NEXT</button>
-                </div>
+
                
             </form>
+            <script>
+                document.getElementById('darkModeToggle').addEventListener('change', function() {
+                    const darkModeStylesheet = document.getElementById('dark-mode-stylesheet');
+                    darkModeStylesheet.disabled = !this.checked;
+                });
+                function validateForm() {
+            const selectedProgram = document.querySelector('input[name="program"]:checked');
+            if (!selectedProgram) {
+                alert('Please select a program.');
+                return false;
+            }
+            return true;
+        }
+        </script>
 </body>
 </html>

@@ -6,11 +6,13 @@ body {
 
 form {
     border: 1px solid #ffffff;
+    
 }
 
 input[type="text"],
 input[type="tel"],
 input[type="email"],
+input[type="radio"],
 select {
     background-color: #333333;
     color: #ffffff;

@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="upload.css">
+    <link rel="stylesheet" href="dark-mode.css" id="dark-mode-stylesheet" disabled>
 </head>
 <body>
    <h1>Upload your Photo and Signature</h1>
+   <div class="checkbox-co">
+    <label for="darkModeToggle" class="dark-mode-toggle">Dark Mode</label>
+    <input type="checkbox" id="darkModeToggle">
+</div>
    
-   <form action="./final.html">
-    <div id="form">
+   <form action="./final.html" onsubmit="return validateForm()">
         <label for="profile_picture">Upload Profile Picture:</label>
         <input type="file" id="profile_picture" name="profile_picture" accept="image/*"><br><br>
         <img id="preview" src="#" alt="Profile Picture Preview" style="display: none; max-width: 100px; max-height: 100px;"><br><br>
@@ -42,6 +46,19 @@
             const file = event.target.files[0];
             readAndPreview(file, 'signature_preview');
         });
+        document.getElementById('darkModeToggle').addEventListener('change', function() {
+            const darkModeStylesheet = document.getElementById('dark-mode-stylesheet');
+            darkModeStylesheet.disabled = !this.checked;
+        });
+
+        function validateForm() {
+            const selectedProgram = document.querySelector('input[name="program"]:checked');
+            if (!selectedProgram) {
+                alert('Please select a program.');
+                return false;
+            }
+            return true;
+        }
         </script>
 </body>
 </html>
