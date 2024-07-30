@@ -10,22 +10,24 @@
 <body>
    <h1>Upload your Photo and Signature</h1>
    <div class="checkbox-co">
-    <label for="darkModeToggle" class="dark-mode-toggle">Dark Mode</label>
-    <input type="checkbox" id="darkModeToggle">
-</div>
+        <label for="darkModeToggle" class="dark-mode-toggle">Dark Mode</label>
+        <input type="checkbox" id="darkModeToggle">
+    </div>
    
-   <form action="./final.html" onsubmit="return validateForm()">
+    <form action="./final.html" onsubmit="return validateForm()">
         <label for="profile_picture">Upload Profile Picture:</label>
-        <input type="file" id="profile_picture" name="profile_picture" accept="image/*"><br><br>
+        <input type="file" id="profile_picture" name="profile_picture" accept="image/*" ><br><br>
         <img id="preview" src="#" alt="Profile Picture Preview" style="display: none; max-width: 100px; max-height: 100px;"><br><br>
-        <label for="signature">Upload Signature:</label>
-        <input type="file" id="signature" name="signature" accept="image/*"><br><br>
-        <img id="signature_preview" src="#" alt="Signature Preview" style="display: none; max-width: 100px; max-height: 100px;"><br><br>
-        <button type="submit">SUBMIT</button>
-        </form>
 
-        <script>
-              function readAndPreview(file, previewId) {
+        <label for="signature">Upload Signature:</label>
+        <input type="file" id="signature" name="signature" accept="image/*" ><br><br>
+        <img id="signature_preview" src="#" alt="Signature Preview" style="display: none; max-width: 100px; max-height: 100px;"><br><br>
+
+        <button type="submit">SUBMIT</button>
+    </form>
+
+    <script>
+        function readAndPreview(file, previewId) {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
@@ -46,19 +48,22 @@
             const file = event.target.files[0];
             readAndPreview(file, 'signature_preview');
         });
+
         document.getElementById('darkModeToggle').addEventListener('change', function() {
             const darkModeStylesheet = document.getElementById('dark-mode-stylesheet');
             darkModeStylesheet.disabled = !this.checked;
         });
 
         function validateForm() {
-            const selectedProgram = document.querySelector('input[name="program"]:checked');
-            if (!selectedProgram) {
-                alert('Please select a program.');
+            const profilePicture = document.getElementById('profile_picture').files[0];
+            const signature = document.getElementById('signature').files[0];
+
+            if (!profilePicture || !signature) {
+                alert('Please upload both Profile Picture and Signature.');
                 return false;
             }
             return true;
         }
-        </script>
+    </script>
 </body>
 </html>
