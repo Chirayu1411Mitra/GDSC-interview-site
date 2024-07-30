@@ -1,0 +1,26 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    background-image: url(UFO\ Space\ Theme\ Desktop\ Wallpaper.png);
+}
+
+form {
+    border: 1px solid #ffffff;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+button {
+    background-color: #bb86fc;
+}
+
+.dark-mode-toggle {
+    color: #ffffff;
+}
