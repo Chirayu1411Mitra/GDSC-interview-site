@@ -23,14 +23,14 @@
         <label for="email">Email Address:</label>
         <input type="email" id="email" name="email" class="fields" required>
 
-        <label for="street_address">Address:</label>
+        <label for="street_address"></label>Address:</label>
         <input type="text" id="street_address" name="street_address" class="fields" required>
+
 
         <label for="city">City:</label>
         <input type="text" id="city" name="city" class="fields" required>
-
-        <label for="State">State:</label>
-        <select name="states" id="states" class="fields" required>
+        <label for="State">State</label>
+        <select name="states" id="states" class="fields">
             <option value="" selected disabled>Select a state</option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -68,22 +68,22 @@
             <option value="Puducherry">Puducherry</option>
             <option value="Ladakh">Ladakh</option>
             <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-        </select>
+          </select>
 
         <label>What programs are you interested in?</label>
-        <div class="option">
+        <div id="option">            
             <input type="radio" id="BE" name="program" value="BE">
             <label for="BE">Bachelors of Engineering</label><br>
         </div>
-        <div class="option">
+        <div id="option">        
             <input type="radio" id="BDES" name="program" value="BDES">
             <label for="BDES">Bachelors of Design</label><br>
         </div>
-        <div class="option">
+        <div id="option">
             <input type="radio" id="BBA" name="program" value="BBA">
-            <label for="BBA">Bachelors of Business Analytics</label><br>
+            <label for="BBA">Bachelors of Buisness Analytics</label><br>
         </div>
-        <div class="option">
+        <div id="option">
             <input type="radio" id="BA_CA" name="program" value="BA_CA">
             <label for="BA_CA">Bachelor of Arts in Culinary Arts</label><br>
         </div>
@@ -148,8 +148,6 @@
             });
         }
     </script>
+
 </body>
 </html>
-
-
-
