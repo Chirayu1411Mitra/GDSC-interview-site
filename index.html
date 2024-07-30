@@ -92,61 +92,79 @@
     </form>
 
     <script>
-        document.getElementById('nextButton').addEventListener('click', function(event) {
-            const phoneNumber = document.getElementById('phone_number').value;
-            const phoneNumberPattern = /^\d{10}$/;
-            if (!phoneNumberPattern.test(phoneNumber)) {
-                alert('Please enter a valid 10-digit phone number.');
-                return;
-            }
-            const selectedProgram = document.querySelector('input[name="program"]:checked');
-            if (selectedProgram) {
-                let url;
-                switch (selectedProgram.value) {
-                    case 'BE':
-                        url = 'BE.html';
-                        break;
-                    case 'BDES':
-                        url = 'BDES.html';
-                        break;
-                    case 'BBA':
-                        url = 'BBA.html';
-                        break;
-                    case 'BA_CA':
-                        url = 'BA_CA.html';
-                        break;
-                    default:
-                        alert('Please select a program.');
-                        return;
-                }
-                window.location.href = url;
-            } else {
-                alert('Please select a program.');
-            }
-        });
+       document.getElementById('nextButton').addEventListener('click', function(event) {
+    const phoneNumber = document.getElementById('phone_number').value;
+    const phoneNumberPattern = /^\d{10}$/;
+    if (!phoneNumberPattern.test(phoneNumber)) {
+        alert('Please enter a valid 10-digit phone number.');
+        return;
+    }
 
-        document.getElementById('darkModeToggle').addEventListener('change', function() {
-            const darkModeStylesheet = document.getElementById('dark-mode-stylesheet');
-            darkModeStylesheet.disabled = !this.checked;
-        });
-
-        var allFields = document.querySelectorAll(".fields");
-        for (var i = 0; i < allFields.length; i++) {
-            allFields[i].addEventListener("keypress", function(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    if (this.value.trim() === '') {
-                        alert('Please fill out this field.');
-                        this.focus();
-                    } else {
-                        const nextElement = this.parentElement.nextElementSibling.querySelector('input, select');
-                        if (nextElement) {
-                            nextElement.focus();
-                        }
-                    }
-                }
-            });
+    const allFields = document.querySelectorAll(".fields");
+    let allFilled = true;
+    allFields.forEach(field => {
+        if (field.value.trim() === '') {
+            allFilled = false;
+            field.focus();
+            alert('Please fill out all fields.');
+            return false;
         }
+    });
+    if (!allFilled) {
+        return;
+    }
+
+    const selectedProgram = document.querySelector('input[name="program"]:checked');
+    if (selectedProgram) {
+        let url;
+        switch (selectedProgram.value) {
+            case 'BE':
+                url = 'BE.html';
+                break;
+            case 'BDES':
+                url = 'BDES.html';
+                break;
+            case 'BBA':
+                url = 'BBA.html';
+                break;
+            case 'BA_CA':
+                url = 'BA_CA.html';
+                break;
+            default:
+                alert('Please select a program.');
+                return;
+        }
+        window.location.href = url;
+    } else {
+        alert('Please select a program.');
+    }
+});
+
+document.getElementById('darkModeToggle').addEventListener('change', function() {
+    const darkModeStylesheet = document.getElementById('dark-mode-stylesheet');
+    darkModeStylesheet.disabled = !this.checked;
+});
+
+var allFields = document.querySelectorAll(".fields");
+for (var i = 0; i < allFields.length; i++) {
+    allFields[i].addEventListener("keypress", function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            if (this.value.trim() === '') {
+                alert('Please fill out this field.');
+                this.focus();
+            } else {
+                const formElements = Array.from(document.querySelectorAll(".fields, input[type='radio'], select"));
+                const currentIndex = formElements.indexOf(this);
+                const nextElement = formElements[currentIndex + 1];
+                if (nextElement) {
+                    nextElement.focus();
+                }
+            }
+        }
+    });
+}
+
     </script>
 
 </body>
