@@ -103,18 +103,13 @@
     }
 
     const allFields = document.querySelectorAll(".fields");
-    let allFilled = true;
-    allFields.forEach(field => {
-        if (field.value.trim() === '') {
-            allFilled = false;
-            field.focus();
-            alert('Please fill out all fields.');
-            return false;
-        }
-    });
-    if (!allFilled) {
-        return;
-    }
+            for (let field of allFields) {
+                if (field.value.trim() === '') {
+                    field.focus();
+                    alert('Please fill out all fields.');
+                    return;
+                }
+            }
 
     const selectedProgram = document.querySelector('input[name="program"]:checked');
     if (selectedProgram) {
